@@ -1,5 +1,5 @@
-	// cd C:\Users\aryam\OneDrive\Documents\C Codes\projects\hangman
-	#include <stdio.h>
+// cd C:\Users\aryam\OneDrive\Documents\C Codes\projects\hangman
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -36,11 +36,11 @@ int main() {
 	}
 	fclose(fp);
 
-	printf("%s\n", word); //just to see what the word is
+	printf("%s\n", word); 
 		
 	char format[strlen(word)];
 	for(i=0; i<strlen(word); i++){
-		format[i]='_';
+		format[i]='_';						
 	}
 	
 	for(i=0; i<(strlen(word)-1); i++){
@@ -59,16 +59,20 @@ int main() {
 			if (word[i] == alphabetfromuser) {
                 printf("\n\n\t\tYes, it's right!\n");
 				printf("\t\tPosition: %d\n", i + 1); 
-                found = 1;
-				format[i]=alphabetfromuser;
-				counter++;
+                found = 1;									
+				format[i]=alphabetfromuser;					
             }
         }
         
 		for(i=0; i<(strlen(word)-1); i++){
 			printf("%c", format[i]);
 		}
-		
+			
+		for(i=0; i<(strlen(word)-1); i++){
+			if(format[i]==word[i]){
+				counter++;
+			}
+		}
         if (!found) {
             printf("No, it's wrong\n");
             attempt--;
