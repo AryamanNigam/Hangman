@@ -21,7 +21,7 @@ stomach
 emotion
 creature
 truth
-dangerous
+dang erous
 situation
 foresight
 light

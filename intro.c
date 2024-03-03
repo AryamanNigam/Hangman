@@ -49,8 +49,8 @@ int main() {
         scanf(" %c", &alphabetfromuser);
         getchar(); 
         
-        int found = 0; 
         for (int i = 0; i < strlen(word); i++) {
+        int found = 0; 
             if (word[i] == alphabetfromuser) {
                 printf("Yes, it's right!");
 				printf("Position: %d\n", i + 1); 
