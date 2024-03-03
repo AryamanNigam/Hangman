@@ -1,5 +1,5 @@
-// cd C:\Users\aryam\OneDrive\Documents\C Codes\projects\hangman
-#include <stdio.h>
+	// cd C:\Users\aryam\OneDrive\Documents\C Codes\projects\hangman
+	#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
