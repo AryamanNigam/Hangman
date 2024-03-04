@@ -1,9 +1,83 @@
-// cd C:\Users\aryam\OneDrive\Documents\C Codes\projects\hangman
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
+
+void hangmanart(int c) {
+    if (c == 5) {
+        printf("\n\n\t +-------------+  \n");
+        printf("\t |             |  \n");
+        printf("\t |             |  \n");
+        printf("\t |             @  \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |________________  \n");
+    }
+    else if (c == 4) {
+        printf("\n\n\t +-------------+  \n");
+        printf("\t |             |  \n");
+        printf("\t |             |  \n");
+        printf("\t |             @  \n");
+        printf("\t |             |  \n");
+        printf("\t |             |  \n");
+        printf("\t |               \n");
+        printf("\t |               \n");
+        printf("\t |  \n");
+        printf("\t |________________  \n");
+    }
+    else if (c == 3) {
+        printf("\n\n\t +-------------+  \n");
+        printf("\t |             |  \n");
+        printf("\t |             |  \n");
+        printf("\t |             @  \n");
+        printf("\t |             |  \n");
+        printf("\t |             |  \n");
+        printf("\t |            /    \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |________________  \n");
+    }
+    else if (c == 2) {
+        printf("\n\n\t +-------------+  \n");
+        printf("\t |             |  \n");
+        printf("\t |             |  \n");
+        printf("\t |             @  \n");
+        printf("\t |             |  \n");
+        printf("\t |             |  \n");
+        printf("\t |            / \\  \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |________________  \n");
+    }
+    else if (c == 1) {
+        printf("\n\n\t +-------------+ \n");
+        printf("\t |             | \n");
+        printf("\t |             | \n");
+        printf("\t |             @ \n");
+        printf("\t |            /|  \n");
+        printf("\t |             |  \n");
+        printf("\t |            / \\  \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |________________  \n");
+    }
+    else if (c == 0) {
+        printf("\n\n\t +-------------+ \n");
+        printf("\t |             | \n");
+        printf("\t |             | \n");
+        printf("\t |             @ \n");
+        printf("\t |            /|\\  \n");
+        printf("\t |             |  \n");
+        printf("\t |            / \\  \n");
+        printf("\t |  \n");
+        printf("\t |  \n");
+        printf("\t |________________  \n");
+    }
+}
 
 int main() {
 	char randomword[1000], temp[50];  //randomword is the random word we read from that we read from the
@@ -12,7 +86,7 @@ int main() {
 	char alphabetfromuser; //the character that the user inputs
 	int randomlineno, total_lines=0;
 	int current_line=0;
-	int attempt=5; //attempt, used for the number of times it gets the word
+	int attempt=6; //attempt, used for the number of times it gets the word
 	int i=0;
 	
 	
@@ -35,8 +109,6 @@ int main() {
 		}
 	}
 	fclose(fp);
-
-	printf("%s\n", word); 
 		
 	char format[strlen(word)];
 	for(i=0; i<strlen(word); i++){
@@ -48,7 +120,7 @@ int main() {
 	}
 	
 	while (attempt != 0) {
-        printf("\n\n\t\tEnter any alphabet in lowercasen\n\n");
+        printf("\n\n\t\tEnter any alphabet in lowercase\n\n");
         fflush(stdout);
         scanf(" %c", &alphabetfromuser);
         getchar(); 
@@ -57,8 +129,7 @@ int main() {
 		
         for (int i = 0; i < strlen(word); i++) { 
 			if (word[i] == alphabetfromuser) {
-                printf("\n\n\t\tYes, it's right!\n");
-				printf("\t\tPosition: %d\n", i + 1); 
+                printf("\n\n\t\tYes, it's right!\n"); 
                 found = 1;									
 				format[i]=alphabetfromuser;					
             }
@@ -74,10 +145,12 @@ int main() {
 			}
 		}
         if (!found) {
-            printf("No, it's wrong\n");
+            printf("\n\n\t\tNo, it's wrong\n");
             attempt--;
-            printf("Attempts left: %d\n", attempt);
+			hangmanart(attempt);
+            printf("\t\tAttempts left: %d\n", attempt);
         }
+		
 		
 		if(counter==(strlen(word)-1)){
 			printf("\nCongrats, you guessed the word\n");
@@ -85,7 +158,7 @@ int main() {
 		}
 		
         if (attempt == 0) {
-            printf("\nSorry, game over\n");
+            printf("\n\t\tSorry, game over\n");
             break;
         }
     }
