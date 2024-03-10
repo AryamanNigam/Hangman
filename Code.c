@@ -88,6 +88,7 @@ int main() {
 	int current_line=0;
 	int attempt=6; //attempt, used for the number of times it gets the word
 	int i=0;
+	char guessed[26]={0};
 	
 	
 	FILE *fp;   //line 19-40 is for reading the input
@@ -124,6 +125,14 @@ int main() {
         fflush(stdout);
         scanf(" %c", &alphabetfromuser);
         getchar(); 
+		
+		if(guessed[alphabetfromuser - 'a']) {
+			printf("\n\n\t Letter has already beene entered\n");
+			continue;
+		}
+		
+		guessed[alphabetfromuser- 'a']=1;
+		
         int found=0;
 		int counter=0; 
 		
@@ -131,7 +140,8 @@ int main() {
 			if (word[i] == alphabetfromuser) {
                 printf("\n\n\t\tYes, it's right!\n"); 
                 found = 1;									
-				format[i]=alphabetfromuser;					
+				format[i]=alphabetfromuser;		
+				guessed[i]=alphabetfromuser;
             }
         }
         
