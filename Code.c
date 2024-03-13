@@ -40,7 +40,7 @@ int main() {
         getchar(); 
 		
 		if(guessed[alphabetfromuser - 'a']) {
-			printf("\n\n\t Letter has already beene entered\n");
+			printf("\n\n\t Letter has already been entered\n");
 			continue;
 		}
 		
