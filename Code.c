@@ -3,81 +3,13 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
+#include "looping.h"
+#include "hangmanart.h"
 
-void hangmanart(int c) {
-    if (c == 5) {
-        printf("\n\n\t +-------------+  \n");
-        printf("\t |             |  \n");
-        printf("\t |             |  \n");
-        printf("\t |             @  \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |________________  \n");
-    }
-    else if (c == 4) {
-        printf("\n\n\t +-------------+  \n");
-        printf("\t |             |  \n");
-        printf("\t |             |  \n");
-        printf("\t |             @  \n");
-        printf("\t |             |  \n");
-        printf("\t |             |  \n");
-        printf("\t |               \n");
-        printf("\t |               \n");
-        printf("\t |  \n");
-        printf("\t |________________  \n");
-    }
-    else if (c == 3) {
-        printf("\n\n\t +-------------+  \n");
-        printf("\t |             |  \n");
-        printf("\t |             |  \n");
-        printf("\t |             @  \n");
-        printf("\t |             |  \n");
-        printf("\t |             |  \n");
-        printf("\t |            /    \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |________________  \n");
-    }
-    else if (c == 2) {
-        printf("\n\n\t +-------------+  \n");
-        printf("\t |             |  \n");
-        printf("\t |             |  \n");
-        printf("\t |             @  \n");
-        printf("\t |             |  \n");
-        printf("\t |             |  \n");
-        printf("\t |            / \\  \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |________________  \n");
-    }
-    else if (c == 1) {
-        printf("\n\n\t +-------------+ \n");
-        printf("\t |             | \n");
-        printf("\t |             | \n");
-        printf("\t |             @ \n");
-        printf("\t |            /|  \n");
-        printf("\t |             |  \n");
-        printf("\t |            / \\  \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |________________  \n");
-    }
-    else if (c == 0) {
-        printf("\n\n\t +-------------+ \n");
-        printf("\t |             | \n");
-        printf("\t |             | \n");
-        printf("\t |             @ \n");
-        printf("\t |            /|\\  \n");
-        printf("\t |             |  \n");
-        printf("\t |            / \\  \n");
-        printf("\t |  \n");
-        printf("\t |  \n");
-        printf("\t |________________  \n");
-    }
-}
+
+void hangmanart(int c);
+
+void readfromfile(char randomword[1000], char word[1000], int *total_lines, int *current_line, int *randomlineno);	
 
 int main() {
 	char randomword[1000], temp[50];  //randomword is the random word we read from that we read from the
@@ -90,27 +22,8 @@ int main() {
 	int i=0;
 	char guessed[26]={0};
 	
+	readfromfile(randomword, word, &total_lines, &current_line, &randomlineno);
 	
-	FILE *fp;   //line 19-40 is for reading the input
-	fp=fopen("words.txt", "r");
-	
-	while(fgets(randomword, sizeof word, fp)!=NULL){
-		total_lines++;
-	}
-	
-	srand(time(NULL));
-	randomlineno=rand()%total_lines+1;
-	
-	rewind(fp);
-	
-	while(fgets(randomword, sizeof word, fp)!=NULL){
-		current_line++; 	
-		if(current_line==randomlineno){
-			strcpy(word,randomword);
-		}
-	}
-	fclose(fp);
-		
 	char format[strlen(word)];
 	for(i=0; i<strlen(word); i++){
 		format[i]='_';						
@@ -136,6 +49,8 @@ int main() {
         int found=0;
 		int counter=0; 
 		
+		
+		
         for (int i = 0; i < strlen(word); i++) { 
 			if (word[i] == alphabetfromuser) {
                 printf("\n\n\t\tYes, it's right!\n"); 
@@ -155,7 +70,7 @@ int main() {
 			}
 		}
         if (!found) {
-            printf("\n\n\t\tNo, it's wrong\n");
+            printf("\n\n\t\tNo, it's  wrong\n");
             attempt--;
 			hangmanart(attempt);
             printf("\t\tAttempts left: %d\n", attempt);
@@ -173,3 +88,4 @@ int main() {
         }
     }
 }	
+
