@@ -31,20 +31,27 @@ int main() {
 	
 	for(i=0; i<(strlen(word)-1); i++){
 		printf("%c", format[i]);
+		printf(" ");
 	}
 	
 	while (attempt != 0) {
-        printf("\n\n\t\tEnter any alphabet in lowercase\n\n");
+        printf("\n\n\t\tEnter any alphabet\n\n");
         fflush(stdout);
         scanf(" %c", &alphabetfromuser);
         getchar(); 
 		
-		if(guessed[alphabetfromuser - 'a']) {
+		
+		if(islower(alphabetfromuser)){
+				alphabetfromuser=toupper(alphabetfromuser);
+		}
+		
+		
+		if(guessed[alphabetfromuser - 'A']) {
 			printf("\n\n\t Letter has already been entered\n");
 			continue;
 		}
 		
-		guessed[alphabetfromuser- 'a']=1;
+		guessed[alphabetfromuser- 'A']=1;
 		
         int found=0;
 		int counter=0; 
@@ -62,6 +69,7 @@ int main() {
         
 		for(i=0; i<(strlen(word)-1); i++){
 			printf("%c", format[i]);
+			printf(" ");
 		}
 			
 		for(i=0; i<(strlen(word)-1); i++){
@@ -84,6 +92,7 @@ int main() {
 		
         if (attempt == 0) {
             printf("\n\t\tSorry, game over\n");
+			printf("\n\n\t\tThe word was %s", word);
             break;
         }
     }
