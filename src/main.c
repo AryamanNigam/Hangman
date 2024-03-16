@@ -7,17 +7,15 @@
 #include "hangmanart.h"
 
 int main(int argc, char **argv) {
-	char random_word[1000], temp[50];  //random_word is the random word we read from that we read from the
+	char random_word[1000];
 	char word[1000]; //word is the variable that holds the string
 	char output[50]; //output tells us whether the character is right or wrong
 	char alphabet_from_user; //the character that the user inputs
-	int random_line_no, total_lines=0;
-	int current_line=0;
 	int attempt=6; //attempt, used for the number of times it gets the word
 	int i=0;
 	char guessed[26]={0};
 	
-	read_from_file(random_word, word, &total_lines, &current_line, &random_line_no, argv[1]);
+	get_word(random_word, argv[1]);
 	
 	char format[strlen(word)];
 	for(i=0; i<strlen(word); i++){
