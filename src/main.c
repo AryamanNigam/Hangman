@@ -3,26 +3,21 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
-#include "looping.h"
+#include "get_random_word.h"
 #include "hangmanart.h"
 
-
-void hangmanart(int c);
-
-void readfromfile(char randomword[1000], char word[1000], int *total_lines, int *current_line, int *randomlineno);	
-
-int main() {
-	char randomword[1000], temp[50];  //randomword is the random word we read from that we read from the
+int main(int argc, char **argv) {
+	char random_word[1000], temp[50];  //random_word is the random word we read from that we read from the
 	char word[1000]; //word is the variable that holds the string
 	char output[50]; //output tells us whether the character is right or wrong
-	char alphabetfromuser; //the character that the user inputs
-	int randomlineno, total_lines=0;
+	char alphabet_from_user; //the character that the user inputs
+	int random_line_no, total_lines=0;
 	int current_line=0;
 	int attempt=6; //attempt, used for the number of times it gets the word
 	int i=0;
 	char guessed[26]={0};
 	
-	readfromfile(randomword, word, &total_lines, &current_line, &randomlineno);
+	read_from_file(random_word, word, &total_lines, &current_line, &random_line_no, argv[1]);
 	
 	char format[strlen(word)];
 	for(i=0; i<strlen(word); i++){
@@ -37,21 +32,21 @@ int main() {
 	while (attempt != 0) {
         printf("\n\n\t\tEnter any alphabet\n\n");
         fflush(stdout);
-        scanf(" %c", &alphabetfromuser);
+        scanf(" %c", &alphabet_from_user);
         getchar(); 
 		
 		
-		if(islower(alphabetfromuser)){
-				alphabetfromuser=toupper(alphabetfromuser);
+		if(islower(alphabet_from_user)){
+				alphabet_from_user=toupper(alphabet_from_user);
 		}
 		
 		
-		if(guessed[alphabetfromuser - 'A']) {
+		if(guessed[alphabet_from_user - 'A']) {
 			printf("\n\n\t Letter has already been entered\n");
 			continue;
 		}
 		
-		guessed[alphabetfromuser- 'A']=1;
+		guessed[alphabet_from_user- 'A']=1;
 		
         int found=0;
 		int counter=0; 
@@ -59,11 +54,11 @@ int main() {
 		
 		
         for (int i = 0; i < strlen(word); i++) { 
-			if (word[i] == alphabetfromuser) {
+			if (word[i] == alphabet_from_user) {
                 printf("\n\n\t\tYes, it's right!\n"); 
                 found = 1;									
-				format[i]=alphabetfromuser;		
-				guessed[i]=alphabetfromuser;
+				format[i]=alphabet_from_user;		
+				guessed[i]=alphabet_from_user;
             }
         }
         
@@ -80,7 +75,7 @@ int main() {
         if (!found) {
             printf("\n\n\t\tNo, it's  wrong\n");
             attempt--;
-			hangmanart(attempt);
+			hangman_art(attempt);
             printf("\t\tAttempts left: %d\n", attempt);
         }
 		

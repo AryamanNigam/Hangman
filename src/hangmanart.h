@@ -1,4 +1,4 @@
-void hangmanart(int c){
+void hangman_art(int c){
     if (c == 5) {
         printf("\n\n\t +-------------+  \n");
         printf("\t |             |  \n");
