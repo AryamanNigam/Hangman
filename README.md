@@ -4,6 +4,6 @@ This is a hangman game implemented using c. It works by reading a random word fr
 
 ## How to compile
 > git clone https://github.com/AryamanNigam/Hangman/
-> cd Hangman
-> gcc ./src/main.c Hangman.exe
+ cd Hangman
+ gcc ./src/main.c Hangman.exe
 
