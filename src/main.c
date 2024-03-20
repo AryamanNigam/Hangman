@@ -17,12 +17,16 @@ int main(int argc, char **argv) {
     bool guessed[26] = {false}; // Array to track guessed letters, initialized to false
     
     get_word(word, argv[1]);
+	if(argc==1){
+		printf("\n\n\tYou forgot to enter the file. Press control+c and while executing, enter the file to be opened\n");
+	}
 
     char format[strlen(word)];
     printf("%s", word);
     for (i = 0; i < strlen(word)-1; i++) {
         format[i] = '_';
     }
+	format[i]='\0';
 
     for (i = 0; i < strlen(word); i++) {
         printf("%c ", format[i]);
