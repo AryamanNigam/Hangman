@@ -17,8 +17,9 @@ int main(int argc, char **argv) {
     bool guessed[26] = {false}; // Array to track guessed letters, initialized to false
     
     get_word(word, argv[1]);
-	if(argc==1){
-		printf("\n\n\tYou forgot to enter the file. Press control+c and while executing, enter the file to be opened\n");
+	if(argc!=2){
+		printf("\n\n\tYou forgot to enter the file.\n");
+		return 1;
 	}
 
     char format[strlen(word)];
