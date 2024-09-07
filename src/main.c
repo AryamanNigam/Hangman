@@ -9,12 +9,12 @@
 
 int main(int argc, char **argv) {
     char random_word[1000];
-    char word[1000]; // word is the variable that holds the string
-    char output[50]; // output tells us whether the character is right or wrong
-    char alphabet_from_user; // the character that the user inputs
-    int attempt = 6; // attempt, used for the number of times it gets the word
+    char word[1000]; 
+    char output[50]; 
+    char alphabet_from_user; 
+    int attempt = 6; 
     int i = 0;
-    bool guessed[26] = {false}; // Array to track guessed letters, initialized to false
+    bool guessed[26] = {false}; 
     
     get_word(word, argv[1]);
 	if(argc!=2){
