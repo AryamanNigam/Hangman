@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 	}
 
     char format[strlen(word)];
-    printf("%s", word);
+
     for (i = 0; i < strlen(word)-1; i++) {
         format[i] = '_';
     }

@@ -2,6 +2,7 @@ void get_word(char random_word[1000], char file_name[1000]){
 	char word[1000];	
 	int current_line;
 	int random_line_no;
+	
     FILE *fp;  
     fp = fopen(file_name, "r");
     if (fp == NULL) {
